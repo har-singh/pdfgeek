@@ -27,12 +27,19 @@ class PDFSplitter(QWidget):
         self.pdf_path = None
         self.reader = None
 
+        self.page_icons_label = QLabel("Pages:")
+        self.layout.addWidget(self.page_icons_label)
+
+
     def upload_pdf(self):
         file_name, _ = QFileDialog.getOpenFileName(self, "Open PDF", "", "PDF Files (*.pdf)")
         if file_name:
             self.pdf_path = file_name
             self.reader = PdfReader(file_name)
-            self.page_spin.setMaximum(len(self.reader.pages))
+            num_pages = len(self.reader.pages)
+            self.page_spin.setMaximum(num_pages)
+            self.page_icons_label.setText("Pages: " + "📄 " * num_pages)
+
 
     def extract_page(self):
         if not self.reader:
