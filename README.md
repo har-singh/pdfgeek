@@ -1,31 +1,53 @@
 # PDF Splitter GUI
 
-Prompt to ChatGPT
+A simple Windows GUI application to upload, preview, and split PDF documents.
 
-First prompt:
+## Features
 
-> I want to create a simple windows application with gui where pdf document is uploaded and I can split or extract the pages
+- Upload a PDF document.
+- Visualize pages using basic icons (e.g. 📄📄📄).
+- Select page icons to extract.
+- Generate a new PDF with selected pages.
 
-Second prompt:
+## Tech Stack
 
-> I have python code to split the pdf document. It is very basic. Now I want that once uploaded it actually show the page representations. representations could be simple emoji so if there are thee pages there are three page icons
+- **Python 3.12**
+- **PyQt5** — GUI
+- **PyPDF2** — PDF manipulation
+- **PyInstaller** — Packaging into Windows executable
 
-In order to generate the executable file a Windows 11 pro virtual machine was created in Azure. On the vm python was installed using `winget install Python.Python.3.12`.
+## Build Instructions
 
-Here the commands that were used to create the executable files.
+Executed on a Windows 11 Pro VM (Azure). Python installed via:
 
 ```powershell
-# Optional: Create and activate a virtual environment
+winget install Python.Python.3.12
+````
+
+### Build Steps
+
+```powershell
+# Optional: Set up virtual environment
 python -m venv venv
 .\venv\Scripts\Activate.ps1
 
-# Install dependencies
+# Install required packages
 pip install pyinstaller PyQt5 PyPDF2
 
-# Package your script
+# Build executable
 pyinstaller --onefile --windowed pdfgeek.py
 ```
 
-Third prompt:
+## Usage
 
-Very good. Not how to make it the icon selectable? Use can select the icons and then extract the page. the output is the document with selected pages (icons)
+1. Launch the app.
+2. Upload a PDF file.
+3. Page icons appear (e.g., 📄).
+4. Select desired page icons.
+5. Click "Extract" — generates a new PDF with selected pages.
+
+## Notes
+
+* UI is minimal and functional.
+* Emoji icons represent PDF pages for simplicity.
+* Output is saved in the same directory as the original file.
