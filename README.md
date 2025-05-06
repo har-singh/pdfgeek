@@ -1,53 +1,58 @@
 # PDF Splitter GUI
 
-A simple Windows GUI application to upload, preview, and split PDF documents.
+A minimal Windows GUI app to upload, preview, and split PDF documents. Built from scratch using Python and packaged into an executable in under 2 hours.
 
 ## Features
 
-- Upload a PDF document.
-- Visualize pages using basic icons (e.g. 📄📄📄).
-- Select page icons to extract.
-- Generate a new PDF with selected pages.
+- Upload a PDF.
+- Display pages as icons (📄).
+- Select pages via icons.
+- Extract selected pages into a new PDF.
+
+## Background
+
+Frustrated by the dependency hell of old tools like PDFsam (Java required), this project was built as a clean, native alternative using Python and ChatGPT prompts. Full write-up: [Created First Ever Windows Executable Software in 2 Hours](https://blog.geekfive.co.uk/blog/2025/05/06/windows-pdf-exe.html)
 
 ## Tech Stack
 
 - **Python 3.12**
 - **PyQt5** — GUI
-- **PyPDF2** — PDF manipulation
-- **PyInstaller** — Packaging into Windows executable
+- **PyPDF2** — PDF handling
+- **PyInstaller** — Build `.exe`
 
 ## Build Instructions
 
-Executed on a Windows 11 Pro VM (Azure). Python installed via:
+Tested on Windows 11 Pro VM (Azure). Install Python via:
 
 ```powershell
 winget install Python.Python.3.12
 ````
 
-### Build Steps
+### Steps
 
 ```powershell
-# Optional: Set up virtual environment
+# (Optional) Set up a virtual environment
 python -m venv venv
 .\venv\Scripts\Activate.ps1
 
-# Install required packages
+# Install dependencies
 pip install pyinstaller PyQt5 PyPDF2
 
-# Build executable
+# Package into executable
 pyinstaller --onefile --windowed pdfgeek.py
 ```
 
 ## Usage
 
-1. Launch the app.
+1. Run the app (`.exe`).
 2. Upload a PDF file.
-3. Page icons appear (e.g., 📄).
-4. Select desired page icons.
-5. Click "Extract" — generates a new PDF with selected pages.
+3. Page icons appear (📄).
+4. Click icons to select pages.
+5. Click "Extract" to save a new PDF with selected pages.
 
 ## Notes
 
-* UI is minimal and functional.
-* Emoji icons represent PDF pages for simplicity.
-* Output is saved in the same directory as the original file.
+* Clean, no-frills UI.
+* Emoji icons represent pages.
+* Output PDF is saved in the same folder as the original.
+* Built fast, works fast.
